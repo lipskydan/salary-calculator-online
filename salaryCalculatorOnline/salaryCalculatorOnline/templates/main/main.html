@@ -4,4 +4,85 @@
 {% endblock %}
 
 {% block body %}
+<div class="container mt-5">
+   <div class="d-flex justify-content-center">
+      <aside class="col-sm-10">
+         <div class="card">
+            <article class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+
+                    <table width="100%" border="0">
+                        <tr>
+                            <td width="30%">{{ form.input_money.label_tag }}</td>
+                            <td>{{ form.input_money }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td align="center">
+                                <!--Show help text for field-->
+                                {% if form.input_money.help_text %}
+                                <small style="color: grey">{{ form.input_money.help_text }}</small>
+                                {% endif %}
+
+                                <!--Show error text for field-->
+                                {% for error in form.input_money.errors %}
+                                <p style="color: red">{{ error }}</p>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    </table>
+
+                     <br>
+
+                    <input type="submit" width="100%" class="btn btn-success" value="Submit">
+
+
+                </form>
+            </article>
+         </div>
+      </aside>
+   </div>
+</div>
+
+{% if salary > 0%}
+
+<div class="container mt-5">
+   <div class="d-flex justify-content-center">
+      <aside class="col-sm-10">
+         <div class="card">
+            <article class="card-body">
+                <table align="center" width="100%" border="0">
+                    <tr>
+                        <td>salary</td>
+                        <td>=</td>
+                        <td>{{ salary }}</td>
+                    </tr>
+                     <tr>
+                        <td>five_per_cent_tax</td>
+                        <td>=</td>
+                        <td>{{five_per_cent_tax}}</td>
+                    </tr>
+                    <tr>
+                        <td>esv</td>
+                        <td>=</td>
+                        <td>{{ esv }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><hr></td>
+                    </tr>
+                     <tr>
+                        <td>Money to cash</td>
+                        <td>=</td>
+                        <td>{{res}}</td>
+                    </tr>
+                </table>
+            </article>
+         </div>
+      </aside>
+   </div>
+</div>
+
+{% endif %}
+
 {% endblock %}
